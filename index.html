@@ -87,6 +87,12 @@
         max-height: 500px; /* Arbitrary large height */
         opacity: 1;
       }
+      
+      /* Chat Widget Specifics */
+      .chat-bg-pattern {
+        background-color: #EFEAE2;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -155,7 +161,7 @@
 
                     <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
                         Master Excel. <br />
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-200">
+                        <span class="text-green-400">
                             Automate Everything.
                         </span>
                     </h1>
@@ -433,39 +439,49 @@
     </footer>
 
     <!-- AI Chat Widget -->
-    <div id="ai-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
-        <div id="chat-window" class="hidden mb-4 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[500px] transition-all duration-300">
-            <div class="bg-brand-600 p-4 flex justify-between items-center text-white">
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans gap-4">
+        
+        <!-- AI Chat Window -->
+        <div id="chat-window" class="hidden w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[500px] transition-all duration-300">
+            <!-- Header: Excel Green -->
+            <div class="bg-excel p-4 flex justify-between items-center text-white">
                 <div class="flex items-center gap-2">
-                    <i data-lucide="sparkles" class="w-5 h-5 text-yellow-300"></i>
+                    <div class="bg-white p-1.5 rounded-full">
+                        <i data-lucide="bot" class="w-5 h-5 text-excel"></i>
+                    </div>
                     <div>
-                        <h3 class="font-bold text-sm">AI Course Advisor</h3>
-                        <p class="text-xs text-brand-100">Powered by Gemini</p>
+                        <h3 class="font-bold text-sm">XL-Genie 🧞‍♂️</h3>
+                        <p class="text-xs text-brand-100">Your AI Excel Guide</p>
                     </div>
                 </div>
-                <button id="close-chat" class="hover:bg-brand-700 p-1 rounded-full transition-colors">
+                <button id="close-chat" class="hover:bg-excel-dark p-1 rounded-full transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-slate-50 space-y-3">
+            
+            <!-- Chat Area: WhatsApp Style Background -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 chat-bg-pattern space-y-3">
                 <div class="flex justify-start">
-                    <div class="max-w-[80%] p-3 rounded-lg text-sm bg-white border border-slate-200 text-slate-700 rounded-bl-none shadow-sm">
-                        Hi! I'm the Master Mindz AI Counselor. Ask me anything about the Excel & VBA course!
+                    <div class="max-w-[80%] p-3 rounded-r-lg rounded-bl-lg rounded-tl-none text-sm bg-white shadow-sm text-slate-800 relative">
+                        Hi! I'm XL-Genie 🧞‍♂️. Ask me anything about the Excel & VBA course!
                     </div>
                 </div>
             </div>
+            
+            <!-- Input Area -->
             <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
-                <input id="chat-input" type="text" placeholder="Ask about the syllabus..." class="flex-1 bg-slate-100 border-transparent focus:bg-white focus:border-brand-500 focus:ring-0 rounded-md text-sm px-3 py-2 outline-none transition-all border" />
-                <button id="send-btn" class="bg-brand-600 hover:bg-brand-700 text-white p-2 rounded-md transition-colors">
-                    <i data-lucide="send" class="w-5 h-5"></i>
+                <input id="chat-input" type="text" placeholder="Ask about the syllabus..." class="flex-1 bg-slate-100 border-transparent focus:bg-white focus:border-brand-500 focus:ring-0 rounded-full text-sm px-4 py-2 outline-none transition-all border" />
+                <button id="send-btn" class="bg-excel hover:bg-excel-dark text-white p-2 rounded-full transition-colors shadow-md w-10 h-10 flex items-center justify-center">
+                    <i data-lucide="send" class="w-5 h-5 pl-0.5"></i>
                 </button>
             </div>
         </div>
         
-        <button id="toggle-chat" class="group flex items-center justify-center w-14 h-14 bg-brand-600 hover:bg-brand-700 text-white rounded-full shadow-lg hover:scale-105 transition-all duration-200">
-            <i data-lucide="message-square" class="w-7 h-7"></i>
+        <!-- Chat Toggle Button: Excel Green -->
+        <button id="toggle-chat" class="group flex items-center justify-center w-14 h-14 bg-excel hover:bg-excel-dark text-white rounded-full shadow-lg hover:scale-105 transition-all duration-200">
+            <i data-lucide="bot" class="w-7 h-7"></i>
             <span class="absolute right-full mr-3 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Ask AI about the course
+                Ask XL-Genie
             </span>
         </button>
     </div>
@@ -482,7 +498,7 @@
         // e.g. const API_KEY = "AIzaSy...";
         const API_KEY = typeof process !== 'undefined' && process.env && process.env.API_KEY 
                         ? process.env.API_KEY 
-                        : 'YOUR_API_KEY_HERE'; 
+                        : 'AIzaSyAb0-7W-HMSz-wyUwKLs7BpyM9ptQFY-rU'; 
 
         const TARGET_AUDIENCE = [
             { icon: 'graduation-cap', title: "Students & Graduates" },
@@ -828,7 +844,9 @@
         const msgContainer = document.getElementById('chat-messages');
 
         let chatOpen = false;
-        let chatHistory = [{role: 'model', parts: [{text: "Hi! I'm the Master Mindz AI Counselor. Ask me anything about the Excel & VBA course!"}]}];
+        // Initialize history as empty array for API calls.
+        // The welcome message is already hardcoded in HTML for the UI.
+        let chatHistory = [];
 
         function toggleChat() {
             chatOpen = !chatOpen;
@@ -846,8 +864,16 @@
         function appendMessage(role, text) {
             const div = document.createElement('div');
             div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            // WhatsApp Style Bubbles
+            // User: Light Green (#d9fdd3), dark text, rounded-tr-none
+            // Model: White, dark text, rounded-tl-none
+            const bubbleClass = role === 'user' 
+                ? 'bg-[#d9fdd3] text-slate-800 rounded-l-lg rounded-br-lg rounded-tr-none shadow-sm' 
+                : 'bg-white text-slate-800 rounded-r-lg rounded-bl-lg rounded-tl-none shadow-sm';
+
             div.innerHTML = `
-                <div class="max-w-[80%] p-3 rounded-lg text-sm ${role === 'user' ? 'bg-brand-600 text-white rounded-br-none' : 'bg-white border border-slate-200 text-slate-700 rounded-bl-none shadow-sm'}">
+                <div class="max-w-[80%] p-3 text-sm whitespace-pre-wrap ${bubbleClass}">
                     ${text}
                 </div>
             `;
@@ -866,35 +892,52 @@
             const loadingDiv = document.createElement('div');
             loadingDiv.id = 'loading-indicator';
             loadingDiv.className = "flex justify-start";
-            loadingDiv.innerHTML = `<div class="bg-white border border-slate-200 p-3 rounded-lg rounded-bl-none shadow-sm"><i data-lucide="loader-2" class="w-5 h-5 text-brand-600 animate-spin"></i></div>`;
+            loadingDiv.innerHTML = `<div class="bg-white border border-slate-200 p-3 rounded-r-lg rounded-bl-lg rounded-tl-none shadow-sm"><i data-lucide="loader-2" class="w-4 h-4 text-brand-600 animate-spin"></i></div>`;
             msgContainer.appendChild(loadingDiv);
             lucide.createIcons();
             msgContainer.scrollTop = msgContainer.scrollHeight;
 
             try {
                 const ai = new GoogleGenAI({ apiKey: API_KEY });
-                const model = ai.getGenerativeModel({ 
+                
+                // Prepare contents for the new SDK format
+                const contents = [
+                    ...chatHistory,
+                    { role: 'user', parts: [{ text: text }] }
+                ];
+
+                const result = await ai.models.generateContent({
                     model: "gemini-2.5-flash",
-                    systemInstruction: `You are a helpful, professional Course Counselor for Master Mindz IT Solutions. Your goal is to answer questions about the 'Mastery Excel & VBA Automation Program'. 
-                    Course: Mastery Excel & VBA Automation Program.
-                    Modules: Excel Foundation, Advanced Analytics, PivotTables, Dashboards, Macros, VBA Programming, Automation Projects.
-                    Fees: $199.
-                    Duration: 10 Weeks.
-                    Tone: Encouraging, professional.
-                    If asked about enrollment, guide them to click 'Enroll Now'.`
+                    contents: contents,
+                    config: {
+                        systemInstruction: `You are XL-Genie, a friendly course counselor for Master Mindz IT Solutions.
+Your goal is to explain the 'Mastery Excel & VBA Automation Program' in simple, easy-to-understand English.
+
+Rules for answering:
+1. Keep sentences short and clear.
+2. Use bullet points (starts with - ) for lists to make it readable.
+3. Do not use complex words.
+4. Be friendly and helpful.
+
+Course Info:
+- Name: Mastery Excel & VBA Automation Program
+- Cost: $199
+- Duration: 10 Weeks
+- Key Topics: Excel Basics, Dashboards, PivotTables, Macros, VBA Automation.
+
+If asked about enrollment, tell them to click the 'Enroll Now' button.`
+                    }
                 });
 
-                const chat = model.startChat({
-                    history: chatHistory,
-                });
-
-                const result = await chat.sendMessage(text);
-                const response = result.response.text();
+                // Trim to remove extra newlines
+                const response = result.text ? result.text.trim() : "";
                 
                 // Remove loading
                 document.getElementById('loading-indicator').remove();
                 
                 appendMessage('model', response);
+                
+                // Update history with correct format
                 chatHistory.push({role: 'user', parts: [{text: text}]});
                 chatHistory.push({role: 'model', parts: [{text: response}]});
 

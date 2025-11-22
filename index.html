@@ -112,9 +112,8 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <span id="logo-text" class="text-2xl font-bold tracking-tight text-brand-900 lg:text-white transition-colors">
-                        Master Mindz<span class="text-brand-500">.</span>
-                    </span>
+                    <!-- Logo Image - Ensure you have a file named 'logo.png' in your project folder -->
+                    <img src="logo.png" alt="Master Mindz - Engage. Inspire. Thrive." class="h-12 md:h-16 w-auto object-contain bg-white/90 rounded px-2 py-1">
                 </div>
 
                 <!-- Desktop Nav -->
@@ -122,8 +121,8 @@
                     <a href="#hero" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Overview</a>
                     <a href="#curriculum" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Syllabus</a>
                     <a href="#projects" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Projects</a>
-                    <a href="#mentor" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Mentor</a>
                     <a href="#testimonials" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Reviews</a>
+                    <a href="#faq" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">FAQs</a>
                     <a href="#enroll" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
                         Book Demo <i data-lucide="chevron-right" class="w-4 h-4"></i>
                     </a>
@@ -142,8 +141,8 @@
                 <a href="#hero" class="text-slate-600 font-medium hover:text-brand-600">Overview</a>
                 <a href="#curriculum" class="text-slate-600 font-medium hover:text-brand-600">Syllabus</a>
                 <a href="#projects" class="text-slate-600 font-medium hover:text-brand-600">Projects</a>
-                <a href="#mentor" class="text-slate-600 font-medium hover:text-brand-600">Mentor</a>
                 <a href="#testimonials" class="text-slate-600 font-medium hover:text-brand-600">Reviews</a>
+                <a href="#faq" class="text-slate-600 font-medium hover:text-brand-600">FAQs</a>
                 <a href="#enroll" class="bg-brand-600 text-white text-center py-3 rounded-lg font-semibold">Enroll Now</a>
             </div>
         </div>
@@ -230,21 +229,6 @@
         </div>
     </section>
 
-    <!-- Companies Banner -->
-    <div class="bg-slate-50 border-b border-slate-200 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Our Students Work At Leading Companies</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <!-- Using Google Fonts for Logo-like text as placeholders -->
-                <span class="text-2xl font-bold text-slate-700 font-sans flex items-center gap-2"><i data-lucide="hexagon" class="fill-slate-700"></i> ACME Corp</span>
-                <span class="text-2xl font-bold text-slate-700 font-serif italic">Globex</span>
-                <span class="text-xl font-extrabold text-slate-700 tracking-tighter">SOYLENT</span>
-                <span class="text-2xl font-bold text-slate-700 flex items-center gap-1"><i data-lucide="triangle" class="fill-slate-700"></i> UMBRELLA</span>
-                <span class="text-2xl font-black text-slate-700">Hooli</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Target Audience Section -->
     <section class="py-20 bg-slate-900 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -274,45 +258,8 @@
         </div>
     </section>
 
-    <!-- Mentor Section -->
-    <section id="mentor" class="py-20 bg-slate-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
-                <div class="grid md:grid-cols-2">
-                    <div class="p-10 md:p-16 flex flex-col justify-center">
-                        <div class="inline-block px-3 py-1 bg-brand-100 text-brand-800 text-xs font-bold rounded-full uppercase tracking-wider w-fit mb-4">Meet Your Mentor</div>
-                        <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Rajesh Kumar</h3>
-                        <p class="text-xl text-brand-600 font-medium mb-6">Microsoft Certified Trainer & Data Consultant</p>
-                        <p class="text-slate-600 leading-relaxed mb-8">
-                            "I've spent the last 12 years helping Fortune 500 companies automate their reporting. Now, I've condensed my decade of experience into this 10-week program. My goal isn't just to teach you Excel; it's to get you promoted."
-                        </p>
-                        
-                        <div class="grid grid-cols-3 gap-6">
-                            <div>
-                                <span class="block text-3xl font-bold text-slate-900">12+</span>
-                                <span class="text-sm text-slate-500">Years Exp</span>
-                            </div>
-                             <div>
-                                <span class="block text-3xl font-bold text-slate-900">15k+</span>
-                                <span class="text-sm text-slate-500">Students</span>
-                            </div>
-                             <div>
-                                <span class="block text-3xl font-bold text-slate-900">50+</span>
-                                <span class="text-sm text-slate-500">Corporate Clients</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="relative h-full min-h-[400px]">
-                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mentor" class="absolute inset-0 w-full h-full object-cover">
-                         <div class="absolute inset-0 bg-gradient-to-l from-transparent to-white/20"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Curriculum Section -->
-    <section id="curriculum" class="py-24 bg-white">
+    <section id="curriculum" class="py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Comprehensive Syllabus</h2>
@@ -330,7 +277,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-slate-50">
+    <section id="projects" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Portfolio Ready</h2>
@@ -345,7 +292,7 @@
     </section>
 
     <!-- Certificate Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 order-2 md:order-1 relative group">
                  <div class="absolute inset-0 bg-brand-600 rounded-2xl rotate-3 opacity-20 group-hover:rotate-2 transition-transform"></div>
@@ -407,7 +354,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 bg-slate-50">
+    <section id="testimonials" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Student Success Stories</h2>
@@ -416,6 +363,59 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8" id="testimonials-grid">
                 <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Common Questions</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-slate-900">Do I need prior coding experience?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-slate-600">
+                        Not at all! We start from the very basics of Excel. For VBA, we assume zero programming knowledge and build your logic step-by-step.
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-slate-900">What happens if I miss a live class?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-slate-600">
+                        All live sessions are recorded and uploaded to your student portal within 24 hours. You have lifetime access to these recordings.
+                    </div>
+                </div>
+                 <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-slate-900">Is the certificate recognized?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-slate-600">
+                        Yes, Master Mindz IT Solutions is a registered training institute. Our certificate is verifiable and recognized by top employers for data roles.
+                    </div>
+                </div>
+                 <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button class="w-full flex items-center justify-between p-5 text-left focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-bold text-slate-900">What software do I need?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200"></i>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-slate-600">
+                        You need a Windows laptop/PC with Microsoft Excel 2016, 2019, 2021, or Office 365. Mac users can join, but VBA experience is best on Windows.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -713,18 +713,16 @@
 
         // Scroll & Sticky Header
         const header = document.getElementById('main-header');
-        const logoText = document.getElementById('logo-text');
+        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
                 header.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-3');
                 header.classList.remove('py-5');
-                logoText.classList.remove('lg:text-white');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('text-slate-200', 'text-slate-600'));
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('hover:text-white', 'hover:text-brand-500'));
             } else {
                 header.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-3');
                 header.classList.add('py-5');
-                logoText.classList.add('lg:text-white');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('text-slate-600', 'text-slate-200'));
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('hover:text-brand-500', 'hover:text-white'));
             }
@@ -754,6 +752,14 @@
                 lucide.createIcons();
             });
         });
+        
+        // FAQ Toggle Function - attached to window for onClick access
+        window.toggleFaq = function(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        };
 
         // ---------------------------------------------------------
         // AI CHAT BOT LOGIC

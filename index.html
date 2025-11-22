@@ -112,8 +112,9 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <!-- Logo Image - Please ensure you have 'logo.png' in your root folder -->
-                    <img src="logo.png" alt="Master Mindz" class="h-14 md:h-20 w-auto object-contain rounded-lg bg-white shadow-sm">
+                    <span id="logo-text" class="text-2xl font-bold tracking-tight text-white transition-colors duration-300">
+                        Master Mindz<span class="text-brand-500">.</span>
+                    </span>
                 </div>
 
                 <!-- Desktop Nav -->
@@ -495,10 +496,10 @@
     </footer>
 
     <!-- NEW REPUTED CHAT BOT DESIGN (Intercom Style) -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans gap-4">
+    <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans gap-4">
         
         <!-- Chat Window -->
-        <div id="chat-window" class="hidden w-[360px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-[550px] transition-all duration-300 origin-bottom-right">
+        <div id="chat-window" class="hidden w-[calc(100vw-2rem)] sm:w-[360px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-[60vh] sm:h-[550px] transition-all duration-300 origin-bottom-right">
             <!-- Enterprise Header -->
             <div class="bg-navy-900 p-6 flex flex-col relative overflow-hidden">
                 <!-- Decorative gradient blob -->
@@ -713,16 +714,19 @@
 
         // Scroll & Sticky Header
         const header = document.getElementById('main-header');
+        const logoText = document.getElementById('logo-text');
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
                 header.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-3');
                 header.classList.remove('py-5');
+                logoText.classList.replace('text-white', 'text-brand-900');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('text-slate-200', 'text-slate-600'));
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('hover:text-white', 'hover:text-brand-500'));
             } else {
                 header.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-3');
                 header.classList.add('py-5');
+                logoText.classList.replace('text-brand-900', 'text-white');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('text-slate-600', 'text-slate-200'));
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.replace('hover:text-brand-500', 'hover:text-white'));
             }

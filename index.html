@@ -112,7 +112,7 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <span id="logo-text" class="text-2xl font-bold tracking-tight text-white transition-colors duration-300">
+                     <span id="logo-text" class="text-2xl font-bold tracking-tight text-white transition-colors duration-300">
                         Master Mindz<span class="text-brand-500">.</span>
                     </span>
                 </div>
@@ -124,9 +124,9 @@
                     <a href="#projects" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Projects</a>
                     <a href="#testimonials" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">Reviews</a>
                     <a href="#faq" class="nav-link text-sm font-medium text-slate-200 hover:text-white transition-colors">FAQs</a>
-                    <a href="#enroll" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                    <button onclick="openEnrollModal()" class="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold shadow-lg hover:shadow-xl transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
                         Book Demo <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    </a>
+                    </button>
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -144,7 +144,7 @@
                 <a href="#projects" class="text-slate-600 font-medium hover:text-brand-600">Projects</a>
                 <a href="#testimonials" class="text-slate-600 font-medium hover:text-brand-600">Reviews</a>
                 <a href="#faq" class="text-slate-600 font-medium hover:text-brand-600">FAQs</a>
-                <a href="#enroll" class="bg-brand-600 text-white text-center py-3 rounded-lg font-semibold">Enroll Now</a>
+                <button onclick="openEnrollModal()" class="bg-brand-600 text-white text-center py-3 rounded-lg font-semibold">Enroll Now</button>
             </div>
         </div>
     </header>
@@ -191,9 +191,9 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                        <a href="#enroll" class="px-10 py-5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold text-xl shadow-lg shadow-brand-900/20 transition-all hover:-translate-y-1 text-center w-full sm:w-auto">
+                        <button onclick="openEnrollModal()" class="px-10 py-5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold text-xl shadow-lg shadow-brand-900/20 transition-all hover:-translate-y-1 text-center w-full sm:w-auto">
                             Enroll Now
-                        </a>
+                        </button>
                     </div>
 
                     <div class="flex items-center gap-4 text-sm text-slate-400">
@@ -228,6 +228,46 @@
                 </div>
             </div>
         </div>
+    </section>
+    
+    <!-- Batch Timer Section -->
+    <section class="bg-[#1D6F42] py-10 border-t border-white/10 relative overflow-hidden shadow-inner">
+      <!-- Background Accents -->
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-10">
+        <div class="absolute top-[-50%] left-[-10%] w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-50%] right-[-10%] w-96 h-96 bg-yellow-300 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          <!-- Text Content -->
+          <div class="text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 text-white/90 font-semibold mb-2 bg-black/20 px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                <span>Upcoming Live Workshop</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+              Next Master Class Starts In:
+            </h3>
+            <p className="text-green-100 mt-1">Don't miss the chance to automate your workflow this week.</p>
+          </div>
+
+          <!-- Timer Digits -->
+          <div class="flex gap-3 sm:gap-6" id="countdown-display">
+             <!-- Populated by JS -->
+          </div>
+
+          <!-- CTA Button -->
+          <button 
+            onclick="openEnrollModal()"
+            className="bg-white text-[#1D6F42] hover:bg-green-50 px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center gap-2 group whitespace-nowrap"
+          >
+            Enroll Now <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+
+        </div>
+      </div>
     </section>
 
     <!-- Target Audience Section -->
@@ -269,10 +309,10 @@
             </div>
 
             <div class="mt-12 text-center">
-                <a href="#enroll" class="inline-flex items-center gap-2 bg-excel hover:bg-excel-dark text-white font-bold px-8 py-3 rounded-lg shadow-lg transition-all hover:-translate-y-0.5">
+                <button onclick="openEnrollModal()" class="inline-flex items-center gap-2 bg-excel hover:bg-excel-dark text-white font-bold px-8 py-3 rounded-lg shadow-lg transition-all hover:-translate-y-0.5">
                     <i data-lucide="file-text" class="w-5 h-5"></i>
                     Download Detailed PDF Syllabus
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -297,7 +337,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
             <div class="w-full md:w-1/2 order-2 md:order-1 relative group px-2 sm:px-0">
                  <div class="absolute inset-0 bg-brand-600 rounded-2xl rotate-3 opacity-20 group-hover:rotate-2 transition-transform scale-95 sm:scale-100"></div>
-                 <div class="relative bg-white border-4 border-slate-200 p-2 rounded-2xl shadow-2xl">
+                 <div class="relative bg-white border-4 border-slate-200 p-2 rounded-2xl shadow-2xl w-full">
                      <!-- Placeholder Certificate Image -->
                      <div class="aspect-[1.414/1] bg-slate-50 border border-slate-200 flex flex-col items-center justify-center text-center p-4 sm:p-8 relative overflow-hidden">
                          <div class="absolute inset-0 border-4 sm:border-8 border-double border-slate-200 m-2 sm:m-4"></div>
@@ -445,10 +485,10 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="px-8 py-4 bg-white text-excel rounded-xl font-bold text-lg shadow-xl hover:bg-green-50 hover:scale-105 transition-all">
+                    <button onclick="openEnrollModal()" class="px-8 py-4 bg-white text-excel rounded-xl font-bold text-lg shadow-xl hover:bg-green-50 hover:scale-105 transition-all">
                         Enroll Now
                     </button>
-                    <button class="px-8 py-4 bg-excel-dark text-white border border-green-400/50 rounded-xl font-bold text-lg hover:bg-[#0f3f22] transition-all">
+                    <button onclick="openEnrollModal()" class="px-8 py-4 bg-excel-dark text-white border border-green-400/50 rounded-xl font-bold text-lg hover:bg-[#0f3f22] transition-all">
                         Schedule Free Consultation
                     </button>
                 </div>
@@ -494,6 +534,45 @@
             </div>
         </div>
     </footer>
+
+    <!-- Enroll / Payment Modal -->
+    <div id="enroll-modal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75" aria-hidden="true" onclick="closeEnrollModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div class="inline-block w-full max-w-2xl my-8 overflow-hidden text-left align-middle transition-all transform bg-white rounded-2xl shadow-xl">
+                <div class="bg-brand-600 p-6 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="clipboard-list" class="w-5 h-5"></i> Student Enrollment Form
+                    </h3>
+                    <button onclick="closeEnrollModal()" class="text-white hover:bg-brand-700 p-1 rounded-full">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="p-0">
+                    <!-- Embed Google Form Here -->
+                    <div class="w-full h-[600px] bg-slate-100 flex items-center justify-center">
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd0YFRxvYlb5V1FpyDirEJK7CM4dY9Y1POZBPSRlPKn42ljdA/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" class="w-full h-full">Loading…</iframe>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 border-t border-slate-200">
+                    <h4 class="font-bold text-slate-900 mb-2">Payment Options:</h4>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="border border-slate-200 bg-white p-3 rounded-lg">
+                            <p class="text-xs font-bold text-slate-500 uppercase">Option 1: UPI / Bank Transfer</p>
+                            <p class="text-sm text-slate-800 mt-1">GPay / PhonePe: <strong>+91 98765 43210</strong></p>
+                            <p class="text-xs text-slate-500 mt-1">Account Name: Master Mindz IT Solutions</p>
+                        </div>
+                        <div class="border border-slate-200 bg-white p-3 rounded-lg">
+                            <p class="text-xs font-bold text-slate-500 uppercase">Option 2: Credit/Debit Card</p>
+                            <a href="#" class="block text-center mt-2 bg-blue-600 text-white text-xs font-bold py-2 rounded hover:bg-blue-700">Pay via Razorpay/Stripe</a>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 text-center">Please attach your payment screenshot in the form or WhatsApp it to our admin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- NEW REPUTED CHAT BOT DESIGN (Intercom Style) -->
     <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans gap-4">
@@ -757,13 +836,51 @@
             });
         });
         
-        // FAQ Toggle Function - attached to window for onClick access
+        // FAQ Toggle Function
         window.toggleFaq = function(btn) {
             const content = btn.nextElementSibling;
             const icon = btn.querySelector('i');
             content.classList.toggle('hidden');
             icon.classList.toggle('rotate-180');
         };
+
+        // Modal Functions
+        window.openEnrollModal = function() {
+            document.getElementById('enroll-modal').classList.remove('hidden');
+        }
+        window.closeEnrollModal = function() {
+            document.getElementById('enroll-modal').classList.add('hidden');
+        }
+
+        // Countdown Timer
+        function updateTimer() {
+            const now = new Date();
+            const target = new Date();
+            let daysUntilSunday = (7 - now.getDay()) % 7;
+            target.setDate(now.getDate() + daysUntilSunday);
+            target.setHours(12, 0, 0, 0);
+
+            if (now.getTime() > target.getTime()) {
+                target.setDate(target.getDate() + 7);
+            }
+
+            const diff = target.getTime() - now.getTime();
+            if (diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / 1000 / 60) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('countdown-display').innerHTML = `
+                 <div class="flex flex-col items-center"><div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"><span class="text-2xl sm:text-4xl font-bold text-white font-mono">${String(d).padStart(2,'0')}</span></div><span class="text-xs sm:text-sm font-medium text-green-100 mt-2 uppercase tracking-wider">Days</span></div>
+                 <div class="flex flex-col items-center"><div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"><span class="text-2xl sm:text-4xl font-bold text-white font-mono">${String(h).padStart(2,'0')}</span></div><span class="text-xs sm:text-sm font-medium text-green-100 mt-2 uppercase tracking-wider">Hours</span></div>
+                 <div class="flex flex-col items-center"><div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"><span class="text-2xl sm:text-4xl font-bold text-white font-mono">${String(m).padStart(2,'0')}</span></div><span class="text-xs sm:text-sm font-medium text-green-100 mt-2 uppercase tracking-wider">Mins</span></div>
+                 <div class="flex flex-col items-center"><div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"><span class="text-2xl sm:text-4xl font-bold text-white font-mono">${String(s).padStart(2,'0')}</span></div><span class="text-xs sm:text-sm font-medium text-green-100 mt-2 uppercase tracking-wider">Secs</span></div>
+                `;
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
 
         // ---------------------------------------------------------
         // AI CHAT BOT LOGIC

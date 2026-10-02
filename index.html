@@ -102,6 +102,33 @@
       /* AI Chat Bot Animations */
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
       .msg-anim { animation: fadeIn 0.3s ease-out forwards; }
+
+      /* Zoom & Viewport Boundary Clamping for Chat Bot */
+      #chat-container {
+        max-width: calc(100vw - 1rem);
+        max-height: calc(100vh - 1rem);
+        max-height: calc(100dvh - 1rem);
+      }
+      #chat-window {
+        max-width: calc(100vw - 1.5rem);
+        max-width: calc(100dvw - 1.5rem);
+        max-height: calc(100vh - 2rem);
+        max-height: calc(100dvh - 2rem);
+        box-sizing: border-box;
+      }
+      @media (min-width: 640px) {
+        #chat-container {
+          max-width: calc(100vw - 2.5rem);
+          max-height: calc(100vh - 2.5rem);
+          max-height: calc(100dvh - 2.5rem);
+        }
+        #chat-window {
+          max-width: calc(100vw - 2.5rem);
+          max-width: calc(100dvw - 2.5rem);
+          max-height: calc(100vh - 3rem);
+          max-height: calc(100dvh - 3rem);
+        }
+      }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -574,37 +601,40 @@
         </div>
     </div>
 
-    <!-- NEW REPUTED CHAT BOT DESIGN (Intercom Style) -->
-    <div class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans gap-4">
+    <!-- ZOOM-PROOF & BOUNDARY CONSTRAINED CHAT BOT -->
+    <div id="chat-container" class="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end font-sans pointer-events-none">
         
-        <!-- Chat Window -->
-        <div id="chat-window" class="hidden w-[calc(100vw-2rem)] sm:w-[360px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-[60vh] sm:h-[550px] transition-all duration-300 origin-bottom-right">
-            <!-- Enterprise Header -->
-            <div class="bg-navy-900 p-6 flex flex-col relative overflow-hidden">
+        <!-- Chat Window (strictly constrained to viewport) -->
+        <div id="chat-window" class="pointer-events-auto hidden w-[calc(100vw-1.5rem)] sm:w-[380px] max-w-[calc(100vw-1.5rem)] sm:max-w-[400px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col h-[520px] max-h-[calc(100vh-2rem)] max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100vh-3.5rem)] sm:max-h-[calc(100dvh-3.5rem)] transition-all duration-200 origin-bottom-right">
+            <!-- Enterprise Header (shrink-0 so close button is NEVER squished or offscreen) -->
+            <div class="bg-navy-900 px-4 py-3 sm:px-5 sm:py-3.5 flex items-center justify-between relative overflow-hidden shrink-0 select-none border-b border-white/10">
                 <!-- Decorative gradient blob -->
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 
-                <div class="flex justify-between items-start relative z-10 mb-4">
-                    <div class="flex items-center gap-3">
-                         <div class="relative">
-                             <div class="w-10 h-10 rounded-full bg-white p-0.5">
-                                 <img src="https://ui-avatars.com/api/?name=AI&background=2563eb&color=fff" alt="Bot" class="w-full h-full rounded-full object-cover">
-                             </div>
-                             <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-navy-900 rounded-full"></span>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-white text-base">Course Advisor</h3>
-                             <p class="text-xs text-slate-300">Online • Replies instantly</p>
-                         </div>
+                <div class="flex items-center gap-3 relative z-10 min-w-0">
+                    <div class="relative shrink-0">
+                        <div class="w-9 h-9 rounded-full bg-white p-0.5 shadow-sm">
+                            <img src="https://ui-avatars.com/api/?name=AI&background=2563eb&color=fff" alt="Bot" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-navy-900 rounded-full"></span>
                     </div>
-                    <button id="close-chat" class="text-slate-300 hover:text-white transition-colors">
-                        <i data-lucide="x" class="w-5 h-5"></i>
+                    <div class="truncate">
+                        <h3 class="font-bold text-white text-sm sm:text-base leading-tight truncate">Course Advisor</h3>
+                        <p class="text-[11px] sm:text-xs text-slate-300 leading-tight">Online • Replies instantly</p>
+                    </div>
+                </div>
+
+                <!-- High-contrast, easy-to-click Close Button -->
+                <div class="flex items-center gap-1.5 relative z-10 shrink-0 ml-2">
+                    <button id="close-chat" type="button" aria-label="Close chat" title="Close chat window (Esc)" class="text-white bg-white/15 hover:bg-white/25 active:bg-white/35 px-2.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 text-xs font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-white/50 cursor-pointer">
+                        <span>Close</span>
+                        <i data-lucide="x" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
             
-            <!-- Clean Chat Area -->
-            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-white space-y-4">
+            <!-- Clean Chat Area (min-h-0 allows smooth scrollbar when height shrinks) -->
+            <div id="chat-messages" class="flex-1 min-h-0 overflow-y-auto p-4 bg-white space-y-4 overscroll-contain">
                 <div class="flex justify-center">
                     <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Today</span>
                 </div>
@@ -621,24 +651,27 @@
                 </div>
             </div>
             
-            <!-- Modern Input Area -->
-            <div class="p-4 bg-white border-t border-slate-100">
+            <!-- Modern Input Area (shrink-0) -->
+            <div class="p-3 sm:p-3.5 bg-white border-t border-slate-100 shrink-0">
                 <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-full px-2 py-1.5 focus-within:border-brand-500 focus-within:ring-2 focus-within:ring-brand-100 transition-all">
                     <input id="chat-input" type="text" placeholder="Type a message..." class="flex-1 bg-transparent border-none focus:ring-0 text-sm px-3 py-1 outline-none text-slate-700 placeholder:text-slate-400" />
-                    <button id="send-btn" class="w-8 h-8 rounded-full bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center transition-colors shadow-sm">
+                    <button id="send-btn" type="button" aria-label="Send message" class="w-8 h-8 rounded-full bg-brand-600 hover:bg-brand-700 text-white flex items-center justify-center transition-colors shadow-sm shrink-0 cursor-pointer">
                         <i data-lucide="arrow-up" class="w-4 h-4"></i>
                     </button>
                 </div>
-                <div class="text-center mt-2">
-                    <span class="text-[10px] text-slate-400 flex items-center justify-center gap-1">
-                        <i data-lucide="sparkles" class="w-3 h-3"></i> Powered by Gemini AI
+                <div class="flex items-center justify-between mt-2 px-1 text-[11px] text-slate-400">
+                    <span class="flex items-center gap-1">
+                        <i data-lucide="sparkles" class="w-3 h-3 text-amber-500"></i> Powered by Gemini AI
                     </span>
+                    <button type="button" id="close-chat-bottom" class="text-slate-500 hover:text-slate-800 hover:underline flex items-center gap-1 cursor-pointer transition-colors font-medium">
+                        <span>Hide chat</span>
+                    </button>
                 </div>
             </div>
         </div>
         
         <!-- Modern Toggle Button (Floating Pill style) -->
-        <button id="toggle-chat" class="group flex items-center gap-3 bg-brand-600 hover:bg-brand-700 text-white pl-4 pr-5 py-3.5 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <button id="toggle-chat" type="button" class="pointer-events-auto group flex items-center gap-3 bg-brand-600 hover:bg-brand-700 text-white pl-4 pr-5 py-3.5 rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
             <div class="relative">
                 <i data-lucide="message-square" class="w-6 h-6"></i>
                 <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-navy-900"></span>
@@ -889,6 +922,7 @@
         const chatToggle = document.getElementById('toggle-chat');
         const chatWindow = document.getElementById('chat-window');
         const closeChat = document.getElementById('close-chat');
+        const closeChatBottom = document.getElementById('close-chat-bottom');
         const chatInput = document.getElementById('chat-input');
         const sendBtn = document.getElementById('send-btn');
         const msgContainer = document.getElementById('chat-messages');
@@ -896,18 +930,46 @@
         let chatOpen = false;
         let chatHistory = [];
 
-        function toggleChat() {
+        function toggleChat(e) {
+            if (e && e.stopPropagation) e.stopPropagation();
             chatOpen = !chatOpen;
             if(chatOpen) {
                 chatWindow.classList.remove('hidden');
                 chatToggle.classList.add('hidden');
+                lucide.createIcons();
+                setTimeout(() => {
+                    if (chatInput) chatInput.focus();
+                    if (msgContainer) msgContainer.scrollTop = msgContainer.scrollHeight;
+                }, 50);
             } else {
                 chatWindow.classList.add('hidden');
                 chatToggle.classList.remove('hidden');
             }
         }
-        chatToggle.addEventListener('click', toggleChat);
-        closeChat.addEventListener('click', toggleChat);
+        if (chatToggle) chatToggle.addEventListener('click', toggleChat);
+        if (closeChat) closeChat.addEventListener('click', toggleChat);
+        if (closeChatBottom) closeChatBottom.addEventListener('click', toggleChat);
+
+        // Prevent clicks inside chat window from triggering outside-click close
+        if (chatWindow) {
+            chatWindow.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && chatOpen) {
+                toggleChat(e);
+            }
+        });
+
+        // Close when clicking outside chat window
+        document.addEventListener('click', (e) => {
+            if (chatOpen && chatWindow && !chatWindow.contains(e.target) && !chatToggle.contains(e.target)) {
+                toggleChat(e);
+            }
+        });
 
         function appendMessage(role, text) {
             const div = document.createElement('div');

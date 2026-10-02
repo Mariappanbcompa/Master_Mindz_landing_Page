@@ -10,7 +10,7 @@ export const sendMessageToCounselor = async (
   history: { role: string; parts: { text: string }[] }[]
 ): Promise<string> => {
   try {
-    const modelId = "gemini-2.5-flash";
+    const modelId = "gemini-2.0-flash";
     
     const response = await ai.models.generateContent({
       model: modelId,
